@@ -1,12 +1,11 @@
-# Bus-Service-
+# Bus-Service-Model- NeuralNet ,Support Vector Machine and Liner regression 
+
 Bus Service 
 title: "R Notebook"
 author: 'Group 3: Komal Luthra Verma, Lucky Sikka, Olayemi Agogbua, Souvik Nnandi'
 output:
-  html_document:
-    df_print: paged
-  word_document: default
-  pdf_document: default
+word_document: default
+pdf_document: default
 bibliography: references.bib
 ---
 install.packages('tinytex')
@@ -392,6 +391,7 @@ set.seed(123);
 rf = randomForest(formula = passengers_avg~., data = FILE3D, subset=train1, importance = TRUE)
 yh2  = predict(rf, newdata=FILE3D[-train1,])
 y2   = FILE3D$passengers_avg[-train1]
+
 derr(y2,yh2,"Random Forest : "); aplot(y2,yh2,"Random Forest")
 I = importance(rf);I = I[order(-I[,1]),]
 varImpPlot(rf)
@@ -401,19 +401,23 @@ dt = tree(passengers_avg~., data = FILE3D, subset=train1)
 yh  = predict(dt, newdata=FILE3D[-train1,])
 y   = FILE3D$passengers_avg[-train1]
 derr(y,yh,"Decision Tree : "); aplot(y,yh,"Decision Tree")
+
 #### Model 5 : Neural Network 
+
 p_load(neuralnet)
 require(neuralnet)
 nn1=neuralnet(passengers_avg~.,data=FILE3D,hidden=1,act.fct="logistic",linear.output=FALSE)
 yh  = predict(nn1, newdata=FILE3D[-train1,])
 y   = FILE3D$passengers_avg[-train1]
 derr(y,yh,"Neural Network: "); aplot(y,yh,"Neural Network")
+
 #### Model 6 : SVM Linear Model 
 svmlinear = e1071::svm(formula = passengers_avg~., data = FILE3D[train,],
 type = 'eps-regression', kernel = 'linear') 
 yh  = predict(svmlinear, newdata=FILE3D[-train1,])
 y   = FILE3D$passengers_avg[-train1]
 derr(y,yh,"SVM Linear: "); aplot(y,yh,"SVM Linear")
+
 #### Model 7 : Auto regressive integrated moving average (ARIMA MODEL) with grouping of Date and sum the passenger 
 library(forecast)
 GroupingArima<- File12 %>% group_by(sdate) %>% 
@@ -423,22 +427,3 @@ m8 <- auto.arima(GroupingArima)
 y = GroupingArima
 yh = m8$fitted
 derr(y,yh,"Auto Regressive Integrated Moving Average Model: "); aplot(y,yh,"Auto Regressive Integrated Moving Average Model")
-```
-
-
-
-
-# References
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
