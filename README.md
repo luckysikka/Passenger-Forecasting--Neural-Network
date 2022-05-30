@@ -2,8 +2,6 @@
 
 Bus Service 
 title: "R Notebook"
-author: 'Group 3: Komal Luthra Verma, Lucky Sikka, Olayemi Agogbua, Souvik Nnandi'
-output:
 word_document: default
 pdf_document: default
 bibliography: references.bib
