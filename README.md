@@ -2,10 +2,7 @@
 
 Bus Service 
 title: "R Notebook"
-word_document: default
-pdf_document: default
-bibliography: references.bib
----
+
 install.packages('tinytex')
 tinytex::install_tinytex()
 
@@ -45,26 +42,6 @@ The data visualization and prediction of passengers on the existing routes have 
 For the prediction of passengers for the new routes, machine learning algorithms such as Linear Model, Linear Regression, Random Forest, Decision Tree, Neural Network and Linear Support Vector Machine (LSVM) were used on the ‘Route aggregator’ table in RStudio. The accuracy obtained from each of the algorithms was based on the values of RMSE and MAPE. These values were then compared across all the models and the model with the best accuracy was selected as the most precise in predicting passengers on the new bus routes.
 At the end, to predict the passengers for the new bus routes, Neural Network model with a combination of training to test data of 80:20 is selected with RMSE of 1016.8 & MAPE of 99.4%. Therefore, the model will assist in efficient bus operation management & accurate, real-time and reliable passenger demand prediction. This will also aid in network planning, bus frequency settings, operation efficiency, costing and quality of service.
 
-# Literature Review
-
-In view of the primary objective of the project of finding a model that predicts the number of passengers for new and existing routes for bus services in Surrey, UK, it was determined that the iterative sequence of the knowledge discovery from the database process (KDD) would be carried out to perform predictive analysis. The purpose of this literature review is to analyse the KDD process with a focus on predictive analytics data mining techniques on bus service time series data.
-Bus transport is one of the most comprehensive and affordable means of transport around the globe and most people rely on it in their daily work and life. From an environmental and passenger perspective, bus transport services reduce consumption of fuel, usage of private cars, and ease traffic congestion. Headway, cost, distance, and comfort are some of the factors passengers consider using bus services. Excessively overcrowded buses for example may discourage some passengers from taking buses. From a transport management perspective, it is pertinent to adequately predict passenger travel demand on various routes and within different intervals (@zhou2013passenger)
-
- A review of five predictive analysis research on bus services and transport-related objectives was carried out to identify possible models that could be used to predict passengers for new and existing routes in Surrey. The results below present a range of techniques that have been used in creating models for prediction.
- 
-1.  Neural Networks and Wavelet Analysis were used to improve the prediction accuracy for passenger flow forecasting in Jilin Province, China (Zhao et al., 2011). The Neural Networks had higher accuracy.
-
-2.  Auto-Regressive Moving Average (ARMA), Seasonal Autoregressive Integrated Moving Average (SARIMA), Autoregressive Integrated Moving Average (ARIMA) and Interactive Multiple Model (IMM) were used on a weekly, daily, 15 minutes and hybrid time series data respectively Shenzhen, China to set up time series models for short-term bus passenger demand based on historical data  @xue2015short (Xue et al., 2015). IMM provided the best accuracy.
-
-3.   2 Step Real-Time Prediction (2 RTP), ARIMA and Linear Regression were used to analyse and predict the passenger flow in Shenzhen, China in real-time (@zhang2017real). 2 RTP provided the best accuracy.
-
-4.    Relevance Vector Machines (RVM) and Support Vector Machines (SVM) were used to provide public transportation information services to the public, reduce passengers' travel times, and improve operational and management levels of public transportation in Beijing, China (@ma2019public). RVM provided the best accuracy.
-
-5.   Long Short-Term Memory (LSTM), a type of Neural Network, SVM, ARIMA, & Naive were used to develop an effective framework to model short-term bus passenger flow in Shenzhen, China and make accurate predictions (@han2011data). LSTM provided the best accuracy
- 
-Of the existing traffic flow prediction methods, Neural Networks (NN) are the most widely used ones. @karlaftis2011statistical believe that NN are very broad, precise and accessible mathematical models that can simulate numerical model components easily. They further go ahead to state that NN have been mainly used as data analytic methods in transport research because of their modelling flexibility, their ability to work with copious amounts of multi-dimensional data, their learning and generalization ability, their adaptability and their generally good predictive ability. There are however several other researchers who posit the use of SVM to address the limitations of NN. It is however worthy to note that despite the above-listed research being of similar transportation-related nature, differences exist in their core objectives and types of data. In addition, Despite the progress in various aspects of intelligent transportation and traffic management areas, only a limited number of surveys can be found that review the growing body of literature focusing on data mining, artificial intelligent algorithms and techniques adopted in these areas (@alsrehin2019intelligent). In view of the above findings, the following methods were used to train and test models to predict the passengers for new and existing routes: Regression, Decision Trees, Neural Networks, SVM and ARIMA.
-
-
 
 # Data Explanation and Preparation
   
@@ -93,67 +70,6 @@ To establish and identify the relationship between the variables, correlation is
 Passenger is the response variable in the analysis basis which all models are created. Therefore, for predicting the passengers on the existing route, Power BI is used on routes_daily_distinct table using the time series forecasting model Autoregressive Integrated Moving Average (ARIMA), in R.
 Machine learning models like Linear model, Linear Regression, Decision tree, Random Tree, Neural Networks, Linear Support Vector Machine and Random forests are used for prediction for new routes in R.
 
-
-# Data Visualisation 
- 
-Data visualisation is the process of translating data into a visual representation, in the form of a figure, map or a graph, to comprehend and extract insights from the data. The purpose is to make it easier to spot any patterns, trends, and outliers in the data set. We have used routes_daily_distinct tables to understand any trends or patterns in the data.
-
-![Summary Statistics](Capture1.PNG)
-
-
-Table 1: Summary statistics of data features
-
-The range of the features can be seen in table 1. Certain variables like passengers, deviation, headway and households have higher ranges than the other two variables hospitals and train stations. 
-
-
-![](Capture2.PNG)
-**_Figure 1_**
-
-
-Figure 1 indicates the average Passengers for the 3 bus operators A, B & C. It is evident that the bus routes operated by operator A have more passenger footfall than bus operators B & C. 
-
-![](Capture3.PNG)
-**_Table2_**
-
-Table 2 shows the yearly total footfall of passengers for each of the bus operators. The data indicates that the routes operated by operators A and C were used by the majority of passengers, however, not many passengers have traveled on the routes operated by operator B. This is because operator B operated only during the year 2016. 
-
-![](Capture4.PNG)
-**_Figure 2_**
-
-Figure 2 demonstrates the average passengers during peak and off-peak hours. The footfall of passengers during peak hours is 3 times more than that of off-peak hours.
-
-![](Capture5.PNG)
-
-Figure 3 illustrates the average passenger footfall for each bus operator for weekdays and weekends. Figure 4 shows the same for peak and off-peak hours. Although there is not much difference in the passenger footfall for weekdays and weekends, there is a considerable difference between footfall for peak and off-peak hours. Also, the average footfall during weekdays is more for all three bus operators. As the aim of this project is to predict passengers for the routes, peak hours in weekdays together can be a strong predictor.
-
-![](Capture6.PNG)
-
-Figures 5 and 6 show the quarterly and yearly passenger footfall for each of the bus operators A, B & C. Operator B has only operated its routes in the 1st & 2nd quarters of 2016. The yearly footfall graph shows that in 2015, the average footfall was higher in comparison to the next 3 years. Also, Operator C started operating in the year 2016 and since then the footfall for operator A has decreased. It can be inferred that some of the passengers of Operator A have shifted to the routes operated by Operator C.
-
-![](Capture7.PNG)
-
-Figure 7 illustrates the average passenger footfall on the bank holidays and non-holidays. Although there is not much difference, the footfall is higher on non-holidays than the bank holidays. So, to predict the passengers, a filter of bank holiday and non-holiday can be used as a predictor. 
-
-![](Capture8.PNG)
-
-
-Figure 8 shows the average percentage of passenger footfall for each day in a week across all routes. It is evident from the graph that the weekdays have a considerably high percentage of passengers traveling by bus as compared to weekends. Also, the number of passengers traveling on Sunday is much less than Saturdays. During weekdays, footfall is less on Mondays among the other weekdays in a week. 
-
-![](Capture9.PNG)
-**_Figure 9_**
-
-
-Figure 9 is the Key Influencers chart. This graph helps to understand the factors that drive a metric to increase or decrease. It analyses the data, ranks the factors that matter, and displays them as key influencers for the target. In this dataset ‘passengers’ is the target variable and so, the factors that drive the passengers to increase, have been investigated. The first influencer is route ‘6001’, indicating the route ‘6001’ has the highest average passenger footfall of 4.53K, keeping all other factors constant. Route ‘100’ is the next factor in this regard. The next important factor is the households. The graph shows the routes having households between 22924-23234 and 9926-9976 have the next highest footfall of 2.94K and 1.44K respectively. Route 20 also has quite a high average footfall of 1.44K. It is evident that the routes with 3 to 4 train stations have an average footfall of  980.8, making it the next key influencer. Also, the peak hours have significantly high average footfall that makes it another crucial influential factor. The bar chart on the right indicates the top 4 bus routes having high average passenger footfall among all routes.  
-
-
-### Correlation Matrix
-
-
-![](Capture10.PNG)
-
-![](Capture11.PNG)
-
-A correlation was run on routes_daily_distinct and routes_aggr_distinct tables and the correlation matrix generated are shown in figure 10 and 11 respectively. The predictors ‘headway’, ‘households’ and ‘train stations’ have significant correlations (at 5% significance level) with the target variable passengers. The other two predictors namely ‘deviation’ and ‘hospitals’ do not indicate significant correlation with the target variable, but ‘deviation’ and ‘hospitals’ are highly correlated with significant predictors ‘headway’, ‘households’ and ‘train stations’ therefore, there seems a chance of multicollinearity. To avoid this multicollinearity problem, all five predictors namely ‘deviation’, ‘headway’, ‘households’, ‘hospitals’, ‘train stations’ have been considered while running the models.
 
 ### Forecasting 
 
@@ -185,72 +101,18 @@ The table below lists all the six models and their accuracy with both the combin
 
 $$\mathrm{MSE}=\frac{1}{n} \sum_{k=1}^{n}\left(y_{k}-\hat{y_{k}}\right)^{2}$$
 
-![](Capture14.PNG)
-
-### Models: Train to Test ratio - 70:30 
-
-![](Capture16.PNG)
-
-### Models: Train to Test ratio - 80:20 
 
 
-![](Capture17.PNG)
+
 
 ## Prediction Model - Existing bus routes
 
 In order to forecast the passengers on the existing routes, we have created a new table where aggregation of passenger data is done, based on the date (sdate). For forecasting, Auto Regressive Integrated Moving Average ARIMA model is used, as it takes into consideration time series data, and creates forecasts based on the historic data obtained over time, as the name suggests moving average. The forecasting graph has been created using Power BI and is presented as figure 10. Passenger forecasting is an important aspect for bus operators to plan & provide timetable for bus operation management. The prediction can be supported by evaluating the mean absolute percentage error (MAPE) and the model has a fairly good forecast accuracy of 48.2%.   
 
-![](Capture15.PNG)
 
 
 
-## Conclusion
 
-Efficient bus operation management is an essential part of public transportation with bus passenger demand playing an important role in resource allocation, network planning, frequency setting, operation efficiency, costing and quality of service.
-Several machine learning techniques such as clustering, classification and regression, as well as varied feature selections, were used to build models to analyse the data. A review of the outputs of the models, using RMSE and MAPE, revealed that the Neural Network model provided the best accuracy and minimum error. In view of this, Neural Network is recommended to predict passengers for new bus routes and ARIMA for existing bus routes.
-It may be noted that there is a further scope of research on finding other factors that may affect passenger footfall which have not been taken into account in the current model, to increase  accuracy and minimise RMSE. 
-
-
-
-# Appendix
-
-# SQL Queries: 
-
-select count(*) from routes_aggr;
-
-select count(*) from(select distinct * from routes_aggr) a;
-
-create table routes_aggr_distinct as select distinct * from routes_aggr;
-
-select count(*) from routes_aggr_distinct;
-
-select count(*) from routes_daily;
-
-select count(*) from(select distinct * from routes_daily) a;
-
-create table routes_daily_distinct as select distinct * from routes_daily;
-select count(*) from routes_daily_distinct;
-
- select min(passengers),max(passengers),avg(passengers),stddev(passengers)
-from routes_daily_distinct;
-
-select min(deviation),max(deviation),avg(deviation),stddev(deviation) 
-from routes_daily_distinct;
-
-select min(headway),max(headway),avg(headway),stddev(headway) 
-from routes_daily_distinct;
-
-select min(households),max(households),avg(households),stddev(households) 
-from routes_daily_distinct;
-
-select min(hospitals),max(hospitals),avg(hospitals),stddev(hospitals) 
-from routes_daily_distinct;
-
-select min(train_stations),max(train_stations),avg(train_stations),stddev(train_stations) 
-from routes_daily_distinct;
-
-                     
-Codes chunks:
 
 ```{r}
 #### Defining Function 
