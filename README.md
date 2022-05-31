@@ -1,33 +1,5 @@
 # Bus-Service-Model- NeuralNet ,Support Vector Machine and Liner regression 
 
-Bus Service 
-title: "R Notebook"
-
-install.packages('tinytex')
-tinytex::install_tinytex()
-
-
-latexmk(engine = 'pdflatex', emulation = TRUE)
-update.packages(ask = FALSE, checkBuilt = TRUE)
-tinytex::tlmgr_update()
-options(tinytex.verbose = TRUE)
-
-
-title: "Bus Services Project"
-author: "Group-3 : Komal Luthra Verma | Lucky Sikka | Olayemi Agogbua | Souvik Nandi"
-output: word_document
-
-
-bibliography: references.bib
----
-
-library(tinytex)
-install.packages('tinytex')
-tinytex::install_tinytex()
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(knitr, captioner, bundesligR, stringr)
-
-
 # Executive Summary
 
 The objective of this project is to predict passengers for the existing and the new bus routes in the county of Surrey, England based on the features in the given database. The data was provided by the Surrey county council and consists of 37 bus operators from the period starting November 2015 to September 2018. 
@@ -111,6 +83,20 @@ In order to forecast the passengers on the existing routes, we have created a ne
 
 
 
+Bus Service 
+title: "R Notebook"
+
+install.packages('tinytex')
+tinytex::install_tinytex()
+latexmk(engine = 'pdflatex', emulation = TRUE)
+update.packages(ask = FALSE, checkBuilt = TRUE)
+tinytex::tlmgr_update()
+options(tinytex.verbose = TRUE)
+library(tinytex)
+install.packages('tinytex')
+tinytex::install_tinytex()
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(knitr, captioner, bundesligR, stringr)
 
 
 
